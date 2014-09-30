@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Frank Siderio
+	 9/18/2014
+	 Introduction to Programming
+	 Project 2 - The Haunted House -->
+	 
+	<head>
+		<title>
+			The Haunted House
+		</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+      
+      <script type="text/javascript">
+      
+      var PlayerLocation = 0, score = 0;
+      var CounterNorth = 0, CounterSouth = 0, CounterEast = 0, CounterWest = 0;
+      
+      function btnGo_clickNorth()
+      {
+      	var message = "You moved to the North side of the house. All you hear is two people....screaming.";
+      	
+      	if(PlayerLocation != 1)
+      	{
+      		if(PlayerLocation === 0)
+      		{  				
+      			if(CounterNorth === 0)
+      			{
+      				score += 5;
+      				CounterNorth++;
+      			}
+      			
+      			else
+      				CounterNorth++;
+      				
+      			//I have this here to be funny. Please don't fail me 	
+      			if(CounterNorth === 5)
+      				message = "Okay you have been here enough. Don't come back again. Please. Trust me. Don't.";
+      				
+      			if(CounterNorth === 6)
+      				alert("I told you not to come back. Now I had to piss you off so you won't do it again.");
+      				
+      			PlayerLocation = 1;
+      		}
+      		
+      		else if(PlayerLocation === 2)
+      		{
+      			message = "Your back where you started. The center of the house. Yes I know very exciting."
+      			PlayerLocation = 0;
+      		}
+      		
+      		else
+      			message = "You can't move that way. Sorry.";
+      		
+      		Display_Message(message);
+      	}
+      	
+      	else
+      	{
+      		message = "You try walking north but you hit the wall. Ouch.";
+      		Display_Message(message);
+      	}	
+      	
+      } 
+      
+      function btnGo_clickSouth()
+      {
+      	var message = "You moved to the South side of the house. Still dark, still scary, but your probably not that scared right now.";
+      	
+      	if(PlayerLocation != 2)
+      	{
+      		if(PlayerLocation === 0)
+      		{
+      			if(CounterSouth === 0)
+      			{
+      				score += 5;
+      				CounterSouth++;
+      			}
+      				
+      			else
+      				CounterSouth++;
+      				
+      			PlayerLocation = 2;
+      		}
+      		
+      		else if(PlayerLocation === 1)
+      		{
+      			message = "Your back where you started. Yep the center of the house I know its amazing."
+      			PlayerLocation = 0;
+      		}
+      		      		
+      		else
+      			message = "You can't move that way";
+      		
+      		Display_Message(message);
+      	}
+      	
+      	else
+      	{
+      		message = "You just walked into the wall. Haha nice going.";
+      		Display_Message(message);
+      	}
+      
+      }  
+      
+      function btnGo_clickEast()
+      {
+      	var message = "You moved to the East side of the house. There's a man telling you to get out but you can't see him.";
+      	
+      	if(PlayerLocation != 4)
+      	{
+      		if(PlayerLocation === 0)
+      		{
+      			if(CounterEast === 0)
+      			{
+      				score += 5;
+      				CounterEast++;
+      			}
+      			
+      			else
+      				CounterEast++;
+      				
+      			PlayerLocation = 4;
+      		}
+      		
+      		else if(PlayerLocation === 3)
+      		{
+      			message = "Your back where you started. Scared yet?"
+      			PlayerLocation = 0;
+      		}
+      		
+      		else
+      			message = "You can't move that way. So don't do it again.";
+      		
+      		Display_Message(message);
+      	}
+      	
+      	else
+      	{
+      		message = "That was a bad idea. You just stubbed your toe on the wall. Now your crying. Need a tissue?";
+      		Display_Message(message);
+      	}
+      }  
+      
+      function btnGo_clickWest()
+      {
+      	var message = "You moved to the West side of the house. There's a women telling you to stay but you can't see her...she doesn't sound attractive";
+      	
+      	if(PlayerLocation != 3)
+      	{
+      		if(PlayerLocation === 0)
+      		{
+      			if(CounterWest === 0)
+      			{
+      				score += 5;
+      				CounterWest++;
+      			}
+      			
+      			else
+      				CounterWest++;
+      				
+      			PlayerLocation = 3;
+      		}
+      		
+      		else if(PlayerLocation === 4)
+      		{
+      			message = "Your back where you started. Which is the center of this beautiful place."
+      			PlayerLocation = 0;
+      		}
+      		
+      		else
+      			message = "You can't move that way. So you probably shouldn't try that again.";
+      		
+      		Display_Message(message);
+      	}
+      	
+      	else
+      	{
+      		message = "No no. Your not going that way. Why? You'll never know. *Evil laugh*";
+      		Display_Message(message);
+		}
+	}
+      
+      function Display_Message(m)
+      {
+      	display = document.getElementById("taMain");
+      	display.value += "\n" + m + " Score: " + score + "\n";
+
+      }
+      
+      
+      </script>
+      
+      <style>
+      	.GameTitle{font-style: bold;}
+      	.EmailFont{font-style: italic;}
+      </style>
+		
+	
+	</head>
+	
+	<body>
+	
+	<h1 class = "GameTitle">
+	The Haunted House
+	</h1>
+	
+	<!-- Couldn't indent this because it looked ugly -->
+	<textarea rows="10" cols="30" id="taMain">
+You are standing in the middle of a haunted house. 
+You don't know how you got there and its very dark.
+	</textarea>
+	
+	<br></br>
+	
+	<input type="button"
+              value="North" 
+              onclick="btnGo_clickNorth();" /> 
+    
+    <input type = "button"
+    		value = "South"
+    		onclick = "btnGo_clickSouth();" /> 
+    		
+    <input type = "button"
+    		value = "East"
+    		onclick = "btnGo_clickEast();" />
+    		
+    <input type = "button"
+    		value = "West"
+    		onclick = "btnGo_clickWest();" />
+    
+    <p class = "EmailFont">
+    	<a href = "mailto:Frank.Siderio1@marist.edu?Subject=Your%20game%20was%20oustanding!">Send me an e-mail</a>
+    </p>
+    		
+    
+	
+	</body>
+
+</html>
